@@ -1,18 +1,24 @@
 import { Link, router } from 'expo-router';
 import { AppPermissionQrcode } from '../../components/hoc/AppPermissionQrcode';
-import CamaraQrCodeApp from '../../components/view/CamaraQrCodeApp';
+import CameraQrCodeApp from '../../components/view/CameraQrCodeApp';
 import Layout from '../../components/view/Layout';
 import { BarCodeScannedType } from '../../constant/type/event-utils';
 
-import { StyleSheet } from 'react-native';
+import { Alert, StyleSheet } from 'react-native';
+import { useState } from 'react';
 const ScanQrCode = () => {
+  const [isFocus, setIsFocus] = useState<boolean>(true);
+
   const handleBarCodeScanned = ({ type, data }: BarCodeScannedType) => {
+    setIsFocus(false);
     if (data.indexOf('crm-portal-job') > -1) {
       const startIndex = data.indexOf('code=') + 5; // 5 is length of 'code='
       const jobCode = data.substring(startIndex);
       router.replace(`/jobs/${jobCode}`);
     } else {
-      alert(`Qr Code ไม่ถูกต้องหรือลองแสกนใหม่อีกครั้ง`);
+      Alert.alert(`Qr Code ไม่ถูกต้อง`, `${data.substring(0, 10).padEnd(13, '.')} ลองสแกนอีกครั้งค่ะ`, [
+        { text: 'OK', onPress: () => setIsFocus(true) },
+      ]);
     }
   };
 
@@ -20,8 +26,7 @@ const ScanQrCode = () => {
     <AppPermissionQrcode
       render={({ permission }) => (
         <Layout title="ScanQrCode">
-          <Link href="/jobs/313123">Test View Jobs</Link>
-          <CamaraQrCodeApp permission={permission} handleBarCodeScanned={handleBarCodeScanned} />
+          <CameraQrCodeApp permission={permission} handleBarCodeScanned={handleBarCodeScanned} isFocus={isFocus} />
         </Layout>
       )}
     />

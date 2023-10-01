@@ -1,11 +1,12 @@
 import { useLocalSearchParams } from 'expo-router';
 
-import { Button, StyleSheet, Text } from 'react-native';
+import { ActivityIndicator, Button, StyleSheet, Text, View } from 'react-native';
 import { AppPermissionCamera } from '../../components/hoc/AppPermissionCamera';
 import CameraNormalApp from '../../components/view/CameraNormalApp';
+import CameraPreview from '../../components/view/CameraPreview';
 import Layout from '../../components/view/Layout';
 import { COLOR_THEME } from '../../theme/color';
-import CameraPreview from '../../components/view/CameraPreview';
+import { Fragment } from 'react';
 
 export default function Page() {
   const { id } = useLocalSearchParams();
@@ -18,28 +19,32 @@ export default function Page() {
         isPreview,
         captured,
         permissionCamera,
+        isLoading,
         __startCamera,
         __retakePicture,
         takePicture,
-        validatePhoto,
         sendPhoto,
-        cameraRef,
+        setCamera,
       }) => (
-        <Layout title="Jobs">
-          <Text style={styles.title}>Jobs Code: {id}</Text>
-          {/* {captured && isPreview ? (
-            <CameraPreview photo={captured} __retakePicture={__retakePicture} validatePhoto={validatePhoto} />
+        <Layout title={`Jobs Code: ${id}`} isLoading={false}>
+          {/* {isLoading && (
+            <View style={{ position: 'absolute', top: '50%', left: '50%' }}>
+              <ActivityIndicator size="large" color={COLOR_THEME.PRIMARY} />
+              <Text style={styles.textLoading}>{'Connecting Job Massage ...'}</Text>
+            </View>
+          )} */}
+          {captured && isPreview ? (
+            <CameraPreview photo={captured} __retakePicture={__retakePicture} sendPhoto={sendPhoto} />
           ) : isShowCamera ? (
-            <CameraNormalApp permission={permissionCamera} __takePicture={takePicture} cameraRef={cameraRef} />
+            <CameraNormalApp
+              isLoading={isLoading}
+              permission={permissionCamera}
+              __takePicture={takePicture}
+              setCamera={setCamera}
+            />
           ) : (
             <Button title="Take Photo" color={COLOR_THEME.PRIMARY} onPress={__startCamera} />
-          )} */}
-          <CameraPreview
-            sendPhoto={sendPhoto}
-            photo={captured}
-            __retakePicture={__retakePicture}
-            validatePhoto={validatePhoto}
-          />
+          )}
         </Layout>
       )}
     />
@@ -47,39 +52,9 @@ export default function Page() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: 'bold',
-    marginBottom: 20,
-  },
-  paragraph: {
-    fontSize: 16,
-    marginBottom: 40,
-  },
-  cameraContainer: {
-    width: '80%',
-    aspectRatio: 1,
-    overflow: 'hidden',
-    borderRadius: 10,
-    marginBottom: 40,
-  },
-  camera: {
-    flex: 1,
-  },
-  button: {
-    backgroundColor: 'blue',
-    paddingHorizontal: 20,
-    paddingVertical: 10,
-    borderRadius: 5,
-  },
-  buttonText: {
-    color: 'white',
-    fontSize: 16,
-    fontWeight: 'bold',
+  textLoading: {
+    paddingTop: 20,
+    fontSize: 20,
+    color: COLOR_THEME.PRIMARY,
   },
 });
