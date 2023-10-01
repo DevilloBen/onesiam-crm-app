@@ -4,12 +4,12 @@
     "slug": "onesiam-crm-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/one_siam_logo.jpeg",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/one_siam_logo.jpeg",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#02243D"
     },
     "assetBundlePatterns": [
       "**/*"
@@ -24,7 +24,13 @@
       "expo-router"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "localhost",
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSAppTransportSecurity": {
+          "NSAllowsArbitraryLoads": true
+        }
+      }
     },
     "android": {
       "adaptiveIcon": {

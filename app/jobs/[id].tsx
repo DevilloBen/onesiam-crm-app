@@ -1,17 +1,49 @@
+import { useLocalSearchParams } from 'expo-router';
 
-import { Link, useLocalSearchParams } from 'expo-router';
-
-import { Text, StyleSheet, View } from 'react-native';
+import { Button, StyleSheet, Text } from 'react-native';
+import { AppPermissionCamera } from '../../components/hoc/AppPermissionCamera';
+import CameraNormalApp from '../../components/view/CameraNormalApp';
+import Layout from '../../components/view/Layout';
+import { COLOR_THEME } from '../../theme/color';
+import CameraPreview from '../../components/view/CameraPreview';
 
 export default function Page() {
   const { id } = useLocalSearchParams();
 
-  return <View style={styles.container}>
-   
-      <Text style={styles.title} >Blog post: {id}</Text>
-      <Link style={styles.title} href="/">Home</Link>
-
-  </View>
+  return (
+    <AppPermissionCamera
+      jobId={id}
+      render={({
+        isShowCamera,
+        isPreview,
+        captured,
+        permissionCamera,
+        __startCamera,
+        __retakePicture,
+        takePicture,
+        validatePhoto,
+        sendPhoto,
+        cameraRef,
+      }) => (
+        <Layout title="Jobs">
+          <Text style={styles.title}>Jobs Code: {id}</Text>
+          {/* {captured && isPreview ? (
+            <CameraPreview photo={captured} __retakePicture={__retakePicture} validatePhoto={validatePhoto} />
+          ) : isShowCamera ? (
+            <CameraNormalApp permission={permissionCamera} __takePicture={takePicture} cameraRef={cameraRef} />
+          ) : (
+            <Button title="Take Photo" color={COLOR_THEME.PRIMARY} onPress={__startCamera} />
+          )} */}
+          <CameraPreview
+            sendPhoto={sendPhoto}
+            photo={captured}
+            __retakePicture={__retakePicture}
+            validatePhoto={validatePhoto}
+          />
+        </Layout>
+      )}
+    />
+  );
 }
 
 const styles = StyleSheet.create({

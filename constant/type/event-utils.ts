@@ -6,3 +6,8 @@ export type QrcodeCollectType = {
   collectCode: string;
   token: string;
 };
+
+export type BarCodeScannedType = {
+  type: string;
+  data: string;
+};
