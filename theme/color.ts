@@ -1,5 +1,5 @@
 export const COLOR_THEME = {
-  PRIMARY: '#010c63',
+  PRIMARY: '#231F20',
   SECENDARY: '#ffffff',
 };
 

@@ -7,14 +7,10 @@ import { BASE64_TEST } from '../../constant/mock/base-img';
 type CameraPreviewProps = {
   photo?: CameraCapturedPicture;
   __retakePicture: () => void;
-  validatePhoto: () => void;
   sendPhoto: () => Promise<void>;
 };
 
-const CameraPreview = ({ photo, __retakePicture, validatePhoto, sendPhoto }: CameraPreviewProps) => {
-  const blurhash =
-    '|rF?hV%2WCj[ayj[a|j[az_NaeWBj@ayfRayfQfQM{M|azj[azf6fQfQfQIpWXofj[ayj[j[fQayWCoeoeaya}j[ayfQa{oLj?j[WVj[ayayj[fQoff7azayj[ayj[j[ayofayayayj[fQj[ayayj[ayfjj[j[ayjuayj[';
-
+const CameraPreview = ({ photo, __retakePicture, sendPhoto }: CameraPreviewProps) => {
   return (
     <View
       style={{
@@ -24,22 +20,11 @@ const CameraPreview = ({ photo, __retakePicture, validatePhoto, sendPhoto }: Cam
         height: '100%',
       }}
     >
-      {/* <ImageBackground
+      <ImageBackground
         source={{ uri: photo && photo.uri }}
         style={{
-          flex: 1,
-        }}
-      /> */}
-      <Image
-        style={{
           flex: 5.5,
-          width: '100%',
-          backgroundColor: '#0553',
         }}
-        source={BASE64_TEST}
-        // placeholder={blurhash}
-        contentFit="cover"
-        transition={1000}
       />
       <View
         style={{
@@ -53,8 +38,8 @@ const CameraPreview = ({ photo, __retakePicture, validatePhoto, sendPhoto }: Cam
           justifyContent: 'space-between',
         }}
       >
-        <Button title="Re Take" color={COLOR_THEME.PRIMARY} onPress={() => {}} />
-        <Button title="Save" color={COLOR_THEME.PRIMARY} onPress={sendPhoto} />
+        <Button title="Re Take" color={COLOR_THEME.PRIMARY} onPress={__retakePicture} />
+        <Button title="Send Photo >>" color={COLOR_THEME.PRIMARY} onPress={sendPhoto} />
       </View>
     </View>
   );

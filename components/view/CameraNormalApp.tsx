@@ -1,41 +1,29 @@
 import { Camera, PermissionResponse } from 'expo-camera';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { COLOR_THEME } from '../../theme/color';
 
 type CameraNormalAppProps = {
+  isLoading: boolean;
   permission: PermissionResponse | null;
-  cameraRef: Camera | null;
   __takePicture: () => Promise<void>;
+  setCamera: React.Dispatch<React.SetStateAction<Camera | null>>;
 };
 
-const CameraNormalApp = ({ permission, cameraRef, __takePicture }: CameraNormalAppProps) => {
+const CameraNormalApp = ({ isLoading, permission, __takePicture, setCamera }: CameraNormalAppProps) => {
   if (permission?.status === 'granted') {
     return (
       <View style={styles.cameraContainer}>
-        <Camera
-          style={styles.camera}
-          ref={(r) => {
-            cameraRef = r;
-          }}
-        ></Camera>
-        <View
-          style={{
-            paddingTop: 20,
-            alignSelf: 'center',
-            flex: 0.5,
-            alignItems: 'center',
-          }}
-        >
-          <TouchableOpacity
-            onPress={__takePicture}
-            style={{
-              width: 70,
-              height: 70,
-              bottom: 0,
-              borderRadius: 50,
-              backgroundColor: '#000',
-            }}
-          />
-        </View>
+        <Camera style={styles.camera} ref={setCamera} />
+
+        {isLoading ? (
+          <View style={styles.loading_focus}>
+            <ActivityIndicator size="large" color={COLOR_THEME.PRIMARY} />
+          </View>
+        ) : (
+          <View style={styles.btn_focus}>
+            <TouchableOpacity onPress={__takePicture} style={styles.btn_title} />
+          </View>
+        )}
       </View>
     );
   }
@@ -59,11 +47,47 @@ export default CameraNormalApp;
 
 const styles = StyleSheet.create({
   camera: {
-    flex: 5.5,
+    flex: 6,
     width: '100%',
   },
   cameraContainer: {
     width: '100%',
     aspectRatio: 1,
+    flex: 1,
+    position: 'relative',
+  },
+  btn_focus: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: '50%',
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    // alignSelf: 'center',
+  },
+  btn_title: {
+    width: 70,
+    height: 70,
+    bottom: 0,
+    borderRadius: 50,
+    backgroundColor: 'lightblue',
+  },
+  loading_focus: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(173, 216, 230, 0.5)',
+  },
+  textLoading: {
+    paddingTop: 20,
+    fontSize: 20,
+    color: COLOR_THEME.SECENDARY,
   },
 });

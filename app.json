@@ -4,16 +4,14 @@
     "slug": "onesiam-crm-app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/one_siam_logo.jpeg",
+    "icon": "./assets/onesiam.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/one_siam_logo.jpeg",
+      "image": "./assets/onesiam.png",
       "resizeMode": "contain",
-      "backgroundColor": "#02243D"
+      "backgroundColor": "#231F20"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "plugins": [
       [
         "expo-camera",
@@ -37,10 +35,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "permissions": [
-        "android.permission.CAMERA",
-        "android.permission.RECORD_AUDIO"
-      ],
+      "permissions": ["android.permission.CAMERA", "android.permission.RECORD_AUDIO"],
       "package": "com.devilloben.onesiamcrmapp"
     },
     "web": {
