@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    // alignSelf: 'center',
   },
   btn_title: {
     width: 70,
