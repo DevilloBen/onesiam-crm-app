@@ -4,7 +4,7 @@ import CameraQrCodeApp from '../../components/view/CameraQrCodeApp';
 import Layout from '../../components/view/Layout';
 import { BarCodeScannedType } from '../../constant/type/event-utils';
 
-import { Alert, StyleSheet } from 'react-native';
+import { Alert, Button, StyleSheet } from 'react-native';
 import { useState } from 'react';
 const ScanQrCode = () => {
   const [isFocus, setIsFocus] = useState<boolean>(true);
@@ -26,6 +26,7 @@ const ScanQrCode = () => {
     <AppPermissionQrcode
       render={({ permission }) => (
         <Layout title="ScanQrCode">
+          <Button color={'black'} title="Test Jobs" onPress={() => router.replace(`/jobs/313123`)} />
           <CameraQrCodeApp permission={permission} handleBarCodeScanned={handleBarCodeScanned} isFocus={isFocus} />
         </Layout>
       )}

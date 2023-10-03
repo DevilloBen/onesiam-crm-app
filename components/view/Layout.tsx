@@ -25,12 +25,18 @@ const Layout = ({ children, title, isLoading = false }: LayoutTypeProps) => {
     <View style={styles.container}>
       <View style={styles.topbar}>
         {title ? (
-          <Pressable style={styles.button} onPress={handleRouteBack}>
-            <Text style={styles.text}>{'<'}</Text>
-          </Pressable>
+          <View style={styles.panelR}>
+            <Pressable style={styles.button} onPress={handleRouteBack}>
+              <Text style={styles.text}>{'<'}</Text>
+            </Pressable>
+          </View>
         ) : null}
         <Image source={require('../../assets/onesiam.png')} style={styles.logo} />
-        {title ? <Text style={styles.title}>{title}</Text> : null}
+        {title ? (
+          <View style={styles.panelL}>
+            <Text style={styles.title}>{title}</Text>
+          </View>
+        ) : null}
       </View>
       <View style={styles.content}>{children}</View>
     </View>
@@ -52,7 +58,6 @@ const styles = StyleSheet.create({
   topbar: {
     flex: 0.5,
     flexDirection: 'row',
-    alignItems: 'center',
     justifyContent: 'space-between',
     backgroundColor: COLOR_THEME.PRIMARY,
     position: 'relative',
@@ -63,17 +68,17 @@ const styles = StyleSheet.create({
     backgroundColor: COLOR_THEME.SECENDARY,
   },
   title: {
+    fontSize: 16,
     paddingHorizontal: 10,
     color: TEXT_THEME.WHITE,
   },
   button: {
-    paddingHorizontal: 30,
     paddingVertical: 20,
-    elevation: 3,
+    paddingHorizontal: 20,
     backgroundColor: COLOR_THEME.PRIMARY,
   },
   text: {
-    fontSize: 26,
+    fontSize: 20,
     fontWeight: 'bold',
     color: COLOR_THEME.SECENDARY,
   },
@@ -92,5 +97,15 @@ const styles = StyleSheet.create({
       { translateX: -30 }, // Adjust according to the logo width (width/2)
       { translateY: -30 }, // Adjust according to the logo height (height/2)
     ],
+  },
+  panelL: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+  panelR: {
+    display: 'flex',
+    justifyContent: 'center',
+    maxHeight: 200,
+    backgroundColor: 'black',
   },
 });
