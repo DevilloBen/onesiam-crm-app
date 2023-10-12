@@ -26,7 +26,7 @@ const ScanQrCode = () => {
     <AppPermissionQrcode
       render={({ permission }) => (
         <Layout title="ScanQrCode">
-          <Button color={'black'} title="Test Jobs" onPress={() => router.replace(`/jobs/313123`)} />
+          {/* <Button color={'black'} title="Test Jobs" onPress={() => router.replace(`/jobs/313123`)} /> */}
           <CameraQrCodeApp permission={permission} handleBarCodeScanned={handleBarCodeScanned} isFocus={isFocus} />
         </Layout>
       )}

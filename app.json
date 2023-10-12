@@ -11,7 +11,9 @@
       "resizeMode": "contain",
       "backgroundColor": "#231F20"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "plugins": [
       [
         "expo-camera",
@@ -22,21 +24,29 @@
       "expo-router"
     ],
     "ios": {
+      "icon": "./assets/onesiam.png",
       "bundleIdentifier": "localhost",
       "supportsTablet": true,
       "infoPlist": {
         "NSAppTransportSecurity": {
           "NSAllowsArbitraryLoads": true
         }
-      }
+      },
+      "runtimeVersion": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/onesiam.png",
         "backgroundColor": "#ffffff"
       },
-      "permissions": ["android.permission.CAMERA", "android.permission.RECORD_AUDIO"],
-      "package": "com.devilloben.onesiamcrmapp"
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "package": "com.devilloben.onesiamcrmapp",
+      "runtimeVersion": {
+        "policy": "appVersion"
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -46,6 +56,9 @@
         "projectId": "80c15750-f5bf-4af1-ba20-f86b1fa2aaa8"
       }
     },
-    "scheme": "onesiam-crm-app"
+    "scheme": "onesiam-crm-app",
+    "updates": {
+      "url": "https://u.expo.dev/80c15750-f5bf-4af1-ba20-f86b1fa2aaa8"
+    }
   }
 }
