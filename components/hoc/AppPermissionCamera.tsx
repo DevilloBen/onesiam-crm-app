@@ -25,6 +25,7 @@ type AppCorePermissionProps = {
 
 const socket = socketIOClient('https://dev-api-internal.onesiam.com/socket-service/event-jobs', {
   path: '/socket-service/event-jobs',
+  transports: ['websocket', 'polling'],
 });
 
 export function AppPermissionCamera({ jobId, render }: AppCorePermissionProps) {
@@ -68,10 +69,14 @@ export function AppPermissionCamera({ jobId, render }: AppCorePermissionProps) {
       }
     });
 
+    socket.on('connect', () => {
+      socket.emit('joinRoom', { channelId: jobId });
+    });
+
     return () => {
       socket.off();
     };
-  }, []);
+  }, [socket]);
 
   const closeCamera = () => {
     setIsShowCamera(false);
@@ -94,7 +99,6 @@ export function AppPermissionCamera({ jobId, render }: AppCorePermissionProps) {
       await FileSystem.deleteAsync(photo.uri, { idempotent: true });
       Alert.alert(`รูปภาพมีปัญหา`, `มีขนาดเกิน 10 MB`, [{ text: 'OK', onPress: __retakePicture }]);
     } else {
-      console.log('Hello test else');
       setIsPreview(true);
       setCaptured(photo);
       setIsLoading(false);
