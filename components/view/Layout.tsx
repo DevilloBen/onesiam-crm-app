@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     position: 'absolute',
-    top: '50%',
+    top: '56%',
     left: '50%',
     width: 60,
     height: 60,
