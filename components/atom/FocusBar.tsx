@@ -1,6 +1,5 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Camera } from 'expo-camera';
+import { StyleSheet, View } from 'react-native';
 import { COLOR_THEME } from '../../theme/color';
 
 export default function FocusBar() {

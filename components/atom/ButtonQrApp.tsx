@@ -1,6 +1,5 @@
 import React from 'react';
-import { Text, StyleSheet, Pressable, GestureResponderEvent, Image } from 'react-native';
-import { COLOR_THEME } from '../../theme/color';
+import { GestureResponderEvent, Image, Pressable, StyleSheet } from 'react-native';
 
 type ButtonAppProps = {
   onPress?: null | ((event: GestureResponderEvent) => void) | undefined;
@@ -25,17 +24,10 @@ const styles = StyleSheet.create({
     height: 320,
     overflow: 'hidden',
     borderRadius: 16,
-    elevation: 12,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 10,
-    },
-    shadowOpacity: 0.51,
-    shadowRadius: 1.16,
+    opacity: 0.85,
   },
   logo: {
-    width: '80%',
-    height: '80%',
+    width: '90%',
+    height: '90%',
   },
 });

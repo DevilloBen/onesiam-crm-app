@@ -23,21 +23,23 @@ const Layout = ({ children, title, isLoading = false }: LayoutTypeProps) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.topbar}>
-        {title ? (
-          <View style={styles.panelR}>
-            <Pressable style={styles.button} onPress={handleRouteBack}>
-              <Text style={styles.text}>{'<'}</Text>
-            </Pressable>
-          </View>
-        ) : null}
-        <Image source={require('../../assets/onesiam.png')} style={styles.logo} />
-        {title ? (
-          <View style={styles.panelL}>
-            <Text style={styles.title}>{title}</Text>
-          </View>
-        ) : null}
-      </View>
+      {title ? (
+        <View style={styles.topbar}>
+          {title ? (
+            <View style={styles.panelR}>
+              <Pressable style={styles.button} onPress={handleRouteBack}>
+                <Text style={styles.text}>{'<'}</Text>
+              </Pressable>
+            </View>
+          ) : null}
+          <Image source={require('../../assets/onesiam.png')} style={styles.logo} />
+          {title ? (
+            <View style={styles.panelL}>
+              <Text style={styles.title}>{title}</Text>
+            </View>
+          ) : null}
+        </View>
+      ) : null}
       <View style={styles.content}>{children}</View>
     </View>
   );
@@ -65,7 +67,8 @@ const styles = StyleSheet.create({
   content: {
     flex: 5.5,
     alignItems: 'center',
-    backgroundColor: COLOR_THEME.SECENDARY,
+    backgroundColor: '#bbe0fc',
+    //backgroundColor: COLOR_THEME.SECENDARY,
   },
   title: {
     fontSize: 16,
@@ -73,7 +76,7 @@ const styles = StyleSheet.create({
     color: TEXT_THEME.WHITE,
   },
   button: {
-    paddingVertical: 20,
+    paddingVertical: 10,
     paddingHorizontal: 20,
     backgroundColor: COLOR_THEME.PRIMARY,
   },
@@ -106,6 +109,6 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     maxHeight: 200,
-    backgroundColor: 'black',
+    backgroundColor: COLOR_THEME.PRIMARY,
   },
 });
