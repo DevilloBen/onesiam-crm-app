@@ -1,5 +1,6 @@
 import { Camera, PermissionResponse } from 'expo-camera';
-import { View, Text, StyleSheet, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { deviceType } from 'expo-device';
+import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { COLOR_THEME } from '../../theme/color';
 
 type CameraNormalAppProps = {
@@ -61,7 +62,7 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     bottom: 0,
-    left: '70%',
+    left: deviceType === 2 ? '66%' : '50%',
     padding: 10,
     justifyContent: 'center',
     alignItems: 'center',
