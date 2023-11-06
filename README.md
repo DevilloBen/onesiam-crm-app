@@ -1,6 +1,7 @@
 # onesiam-crm-app
 
 eas build -p android --profile preview
+eas build -p android --profile production
 
 # onesiam-crm-app
 

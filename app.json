@@ -1,8 +1,8 @@
 {
   "expo": {
     "name": "one-snap-receipt",
-    "slug": "one-snap-receipt",
-    "version": "1.0.0",
+    "slug": "onesiam-crm-app",
+    "version": "1.1.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
