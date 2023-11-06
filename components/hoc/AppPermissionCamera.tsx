@@ -22,8 +22,8 @@ type AppCorePermissionProps = {
     status: string;
   }) => React.ReactNode;
 };
-
-const socket = socketIOClient('https://dev-api-internal.onesiam.com/socket-service/event-jobs', {
+//https://dev-api-internal.onesiam.com/socket-service/event-jobs dev
+const socket = socketIOClient('https://spw-api-internal.onesiam.com/socket-service/event-jobs', {
   path: '/socket-service/event-jobs',
   transports: ['websocket', 'polling'],
 });
