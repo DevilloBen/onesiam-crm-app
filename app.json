@@ -1,19 +1,18 @@
 {
   "expo": {
-    "name": "onesiam-crm-app",
-    "slug": "onesiam-crm-app",
+    "name": "one-snap-receipt",
+    "slug": "one-snap-receipt",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/onesiam.png",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
+    "scheme": "one-snap-receipt",
     "splash": {
-      "image": "./assets/onesiam.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#231F20"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "plugins": [
       [
         "expo-camera",
@@ -24,7 +23,6 @@
       "expo-router"
     ],
     "ios": {
-      "icon": "./assets/onesiam.png",
       "bundleIdentifier": "localhost",
       "supportsTablet": true,
       "infoPlist": {
@@ -36,13 +34,10 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/onesiam.png",
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "permissions": [
-        "android.permission.CAMERA",
-        "android.permission.RECORD_AUDIO"
-      ],
+      "permissions": ["android.permission.CAMERA", "android.permission.RECORD_AUDIO"],
       "package": "com.devilloben.onesiamcrmapp",
       "runtimeVersion": {
         "policy": "appVersion"
@@ -56,7 +51,6 @@
         "projectId": "80c15750-f5bf-4af1-ba20-f86b1fa2aaa8"
       }
     },
-    "scheme": "onesiam-crm-app",
     "updates": {
       "url": "https://u.expo.dev/80c15750-f5bf-4af1-ba20-f86b1fa2aaa8"
     }
