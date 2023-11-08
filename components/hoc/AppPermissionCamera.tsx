@@ -23,9 +23,9 @@ type AppCorePermissionProps = {
   }) => React.ReactNode;
 };
 //https://dev-api-internal.onesiam.com/socket-service/event-jobs dev
-//https://qa-api-internal.onesiam.com/socket-service/event-jobs dev
+//https://qa-api-internal.onesiam.com/socket-service/event-jobs QA
 
-const socket = socketIOClient('https://qa-api-internal.onesiam.com/socket-service/event-jobs', {
+const socket = socketIOClient('https://spw-api-internal.onesiam.com/socket-service/event-jobs', {
   path: '/socket-service/event-jobs',
   transports: ['websocket', 'polling'],
 });

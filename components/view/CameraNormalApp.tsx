@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     top: 0,
     right: 0,
     bottom: 0,
-    left: deviceType === 2 ? '66%' : '50%',
+    left: deviceType === 2 ? '60%' : '50%',
     padding: 10,
     justifyContent: 'center',
     alignItems: 'center',

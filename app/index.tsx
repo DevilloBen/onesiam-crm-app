@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
       ? {
           position: 'absolute',
           top: -76,
-          left: 220,
+          left: 200,
           backgroundColor: COLOR_THEME.PRIMARY,
           borderRadius: 100,
           padding: 10,
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     deviceType === 2
       ? {
           backgroundColor: 'white',
-          padding: 140,
+          padding: 120,
           alignItems: 'center',
           borderRadius: 30,
           position: 'relative',
